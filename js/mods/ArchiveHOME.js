@@ -97,9 +97,6 @@ var _onRowSelect = function(){
  * 
  * AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  * 
- *      *screams internally
- * 
- *      *Aaron actually screeches
  */
 
            //popArrayTax.push(new dhtmlXPopup({form: printForm,id:["addTAXADJBTN_"+z]}));  // * NOTE: 'popArray' is a global varible array to capter all popups *
