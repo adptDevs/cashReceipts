@@ -78,6 +78,7 @@ var cashReceipts2 = (function(){
 
 	var init = function(parent, acl, sections, userData, sectionList){
 		var scriptArray = [dataPath+"crForms.js?v=" + Math.random(),
+							dataPath+"crConstants.js?v=" + Math.random(),
 							"/components/gridCOMP.js?v=" + Math.random()
 		];
 		for(var i = 0; i < sectionList.length; i++){

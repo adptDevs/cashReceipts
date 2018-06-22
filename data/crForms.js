@@ -2456,7 +2456,22 @@ fileUploadFormData: [
 			{type: "button", label: "New Input", value: "Cancel", name: "cancel"}
 		]}
 	]}
-]
+],
+
+selectTemplateFormDataV2: [ // This is for the second version of CR!
+  {type: "settings", position: "label-left", labelWidth: 90, inputWidth: 130},
+    {type: "block", width: "auto", blockOffset: 20, list: [
+      {type: "label", label: "<h2>Find the template you are looking for:</h2>", value: "", labelWidth: "600"},
+      {type: "block", width: "auto", blockOffset: "0", list: [
+        {type: "combo", value: "", name: "selectTemplate", inputWidth: "600"}
+      ]},
+      {type: "block", width: "auto", blockOffset: "0", list: [
+        {type: "button", label: "New Input", value: "Go!", name: "genBtn"},
+        {type: "newcolumn", offset: "50"},
+        {type: "button", label: "New Input", value: "Save to favorites", name: "saveToFavorites"}
+      ]}
+    ]}
+  ],
 
 
 };
