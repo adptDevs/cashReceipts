@@ -337,7 +337,7 @@ cashGenTempData: [
   {type: "block", width: "auto", list: [ 
   {type:"calendar", inputWidth:120, required:true, label:"<span style='font-weight:bold; color: #9099a2;'>Business Date:</span>", offsetLeft:20, position:"label-top", name:"effectDate"},
   {type:"newcolumn"},
-  {type: "combo", inputWidth:100, required:true,  position:"label-top", label:"<span style='font-weight:bold; color: #9099a2; margin-top:10px;'>Shift:</span>", name:"shiftType", connector:"/_apps/cashReceipts/connectors/shift_ConnectorCOMBO.php"},
+  {type: "combo", inputWidth:100, required:true,  position:"label-top", label:"<span style='font-weight:bold; color: #9099a2; margin-top:10px;'>Shift:</span>", name:"shiftType", connector:"/_apps/cashReceipts2/connectors/shift_ConnectorCOMBO.php"},
 
 ]},
 // BILLS SECTION ..................................................................................................................................................................................................

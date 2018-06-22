@@ -26,7 +26,7 @@ function add($cn){
 	            $errorStr .= "code: ".$error[ 'code']."<br />";
 	            $errorStr .= "message: ".$error[ 'message']."<br />";
 	        }
-	        mail('megan.lindsey@arkansas.gov', 'Cash Receipts - Add Favorite QRY', $errorStr . "<br />" . $query);
+	
 	    }
 	    return "<p style = 'color: #ff9933;'>Oops! There was an error!</p>";
 	}
@@ -48,7 +48,6 @@ function update($cn){
 	            $errorStr .= "code: ".$error[ 'code']."<br />";
 	            $errorStr .= "message: ".$error[ 'message']."<br />";
 	        }
-	        mail('aaron.pillert@arkansas.gov', 'Cash Receipts - Update Favorite QRY', $errorStr . "<br />" . $query);
 	    }
 	    return "<p style = 'color: #ff9933;'>Oops! There was an error!</p>";
 	}
@@ -68,7 +67,6 @@ function delete($cn){
 	            $errorStr .= "code: ".$error[ 'code']."<br />";
 	            $errorStr .= "message: ".$error[ 'message']."<br />";
 	        }
-	        mail('aaron.pillert@arkansas.gov', 'Cash Receipts - Delete Favorite QRY', $errorStr . "<br />" . $query);
 	    }
 	    return "<p style = 'color: #ff9933;'>Oops! There was an error!</p>";
 	}

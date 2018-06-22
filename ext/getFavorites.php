@@ -22,7 +22,6 @@ if(isset($_GET["userID"])){
 	              $errorStr .= "code: ".$error[ 'code']."<br />";
 	              $errorStr .= "message: ".$error[ 'message']."<br />";
 	          }
-	          mail('megan.lindsey@arkansas.gov', 'cashReciepts - Get Favorities QRY', $errorStr . "<br />" . $query);
 	      }
 	      echo "error";
 	  }else{

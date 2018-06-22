@@ -33,7 +33,6 @@ stModID = $stationModifier
 echo $formData;
 
 // EMAIL RESPONSE TO TROUBLE-SHOOT
-mail('megan.lindsey@arkansas.gov', 'cashReciepts - Template QRY',$query);
 
   $res = sqlsrv_query($conn, $query);
 
@@ -45,7 +44,6 @@ mail('megan.lindsey@arkansas.gov', 'cashReciepts - Template QRY',$query);
               $errorStr .= "code: ".$error[ 'code']."<br />";
               $errorStr .= "message: ".$error[ 'message']."<br />";
           }
-          mail('megan.lindsey@arkansas.gov', 'cashReciepts 2 - Template QRY', $errorStr . "<br />" . $query);
       }
       return "error";
   }

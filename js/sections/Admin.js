@@ -15,13 +15,13 @@ var Admin = (function(){
 	var init = function(tabbar, sectionACL){
 
 		tabbar.addTab("admin", "ADMIN");						  // ADMIN TAB
-		tabbar.addTab("cashier", "CASHIER FORM GENERATOR");      // CASHIER TAB
-		tabbar.addTab("cashierManger", "CASHIER FORM MANAGER"); // CASHIER MANAGER TAB
+		//tabbar.addTab("cashier", "CASHIER FORM GENERATOR");      // CASHIER TAB
+		//tabbar.addTab("cashierManger", "CASHIER FORM MANAGER"); // CASHIER MANAGER TAB
 		tabbar.addTab("centralOfficeTAB","CASH RECEIPT FILE SERVER"); // FILE SERVER TAB
 
 		adminTab = tabbar.tabs("admin");
-		cashierTab = tabbar.tabs("cashier");
-		cashierManagerTab = tabbar.tabs("cashierManger");
+		//cashierTab = tabbar.tabs("cashier");
+		//cashierManagerTab = tabbar.tabs("cashierManger");
 		fileServerTab = tabbar.tabs("centralOfficeTAB");
 
 

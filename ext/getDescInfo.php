@@ -22,7 +22,6 @@ if(isset($_GET['gl'])){
 	              $errorStr .= "code: ".$error[ 'code']."<br />";
 	              $errorStr .= "message: ".$error[ 'message']."<br />";
 	          }
-	          mail('megan.lindsey@arkansas.gov', 'cashReciepts - Template QRY', $errorStr . "<br />" . $q . "On Line 266");
 	      }
 
 	      echo  json_encode(["error", "OH MY GOSH WHAT HAPPENED?!?!?! I WANT CHILIS BB BACK RIBS!"]);

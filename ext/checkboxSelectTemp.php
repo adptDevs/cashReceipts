@@ -23,7 +23,6 @@ $res = sqlsrv_query($conn, $query);
               $errorStr .= "code: ".$error[ 'code']."<br />";
               $errorStr .= "message: ".$error[ 'message']."<br />";
           }
-          mail('megan.lindsey@arkansas.gov', 'cashReciepts - Template QRY', $errorStr . "<br />" . $query);
       }
       echo "error";
  }

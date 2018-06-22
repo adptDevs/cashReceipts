@@ -600,6 +600,18 @@ var _calculateADJCreditTotal = function(name){
 
 };
 
+var _onRowSelect2 = function(){
+    recentSubmissionGrid.attachEvent("onRowSelect", function(id, ind){
+        console.log(cashReceipts2.getPaths("ext")+"getCRFormData.php?crrID="+id);
+        dhx.ajax.get(cashReceipts2.getPaths("ext")+"getCRFormData.php?crrID="+id, function(text){
+
+        }).then(function(realdata){
+            var data = JSON.parse(JSON.parse(realdata));
+            console.log(data);
+        });
+    });
+};
+
 //////////////////////////////////////////////////////////////////
     
 // Public methods
@@ -746,6 +758,7 @@ printForm.hideItem("print");
 printForm.hideItem("backBtn");
 
 _onRowSelect();
+//_onRowSelect2();
 
 
         };

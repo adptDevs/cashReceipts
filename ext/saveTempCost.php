@@ -298,7 +298,6 @@ print_r($adjList->payments);
               $errorStr .= "code: ".$error[ 'code']."<br />";
               $errorStr .= "message: ".$error[ 'message']."<br />";
           }
-          mail('megan.lindsey@arkansas.gov', 'cashReciepts - Template QRY', $errorStr . "<br />" . $query . "On Line 266");
       }
       return "error";
   }else{
@@ -333,7 +332,6 @@ for($l=0;$l<sizeof($lineItemADJs);$l++){
               $errorStr .= "code: ".$error[ 'code']."<br />";
               $errorStr .= "message: ".$error[ 'message']."<br />";
           }
-          mail('megan.lindsey@arkansas.gov', 'cashReciepts - Template QRY', $errorStr . "<br />" . $queryLineItemAdj . "On Line 301");
       }
       return "error";
   }else{
@@ -367,7 +365,6 @@ for($l=0;$l<sizeof($taxItemADJs);$l++){
               $errorStr .= "code: ".$error[ 'code']."<br />";
               $errorStr .= "message: ".$error[ 'message']."<br />";
           }
-          mail('megan.lindsey@arkansas.gov', 'cashReciepts - Template QRY', $errorStr . "<br />" . $queryTaxItemAdj . "On Line 336");
       }
       return "error";
   }else{
@@ -403,7 +400,6 @@ for($l=0;$l<sizeof($taxExempt);$l++){
               $errorStr .= "code: ".$error[ 'code']."<br />";
               $errorStr .= "message: ".$error[ 'message']."<br />";
           }
-          mail('megan.lindsey@arkansas.gov', 'cashReciepts - Template QRY', $errorStr . "<br />" . $queryTaxExempt . "On Line 372");
       }
       return "error";
   }else{
@@ -471,7 +467,6 @@ if($_POST["cashADJ"] != 0 || $_POST["cashADJSHORT"] != 0 || $_POST["cashSalesADJ
               $errorStr .= "code: ".$error[ 'code']."<br />";
               $errorStr .= "message: ".$error[ 'message']."<br />";
           }
-          mail('megan.lindsey@arkansas.gov', 'cashReciepts - Template QRY', $errorStr . "<br />" . $queryPaymentAdj . "On Line 439");
       }
       return "error";
   }else{
@@ -522,7 +517,6 @@ $cashLogQRY = "INSERT INTO cashLog (stID, stSftID, businessDate, bills_hundreds,
               $errorStr .= "code: ".$error[ 'code']."<br />";
               $errorStr .= "message: ".$error[ 'message']."<br />";
           }
-          mail('megan.lindsey@arkansas.gov', 'cashReciepts - Template QRY', $errorStr . "<br />" . $cashLogQRY . "On Line 486");
       }
       return "error";
   }else{

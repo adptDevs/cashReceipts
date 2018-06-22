@@ -31,7 +31,6 @@
 	              $errorStr .= "code: ".$error[ 'code']."<br />";
 	              $errorStr .= "message: ".$error[ 'message']."<br />";
 	          }
-	          mail('megan.lindsey@arkansas.gov', 'cashReciepts - Template QRY', $errorStr . "<br />" . $sql . "On Line 266");
 	      }
 
 	      $hasError = true; 

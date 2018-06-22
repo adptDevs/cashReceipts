@@ -299,11 +299,22 @@ echo $query;
               $errorStr .= "code: ".$error[ 'code']."<br />";
               $errorStr .= "message: ".$error[ 'message']."<br />";
           }
-          mail('megan.lindsey@arkansas.gov', 'cashReciepts - Template QRY', $errorStr . "<br />" . $query . "On Line 266");
       }
       return "error";
   }else{
-
+    $submissionQry = "INSERT INTO [Playground Aaron].dbo.submittedForms (crrID, submittedForm) VALUES (@@identity, '".$_GET["crFormData"]."')";
+    $res = sqlsrv_query($conn, $submissionQry);
+    if($res === false){
+      if( ($errors = sqlsrv_errors() ) != null) {
+        $errorStr = "";
+            foreach( $errors as $error ) {
+                $errorStr .= "SQLSTATE: ".$error[ 'SQLSTATE']."<br />";
+                $errorStr .= "code: ".$error[ 'code']."<br />";
+                $errorStr .= "message: ".$error[ 'message']."<br />";
+            }
+        }
+        return "error";
+    }
   }
 
 /*****************************************************************************************************************************************************/
@@ -326,7 +337,6 @@ for($i=0;$i<sizeof($descItems);$i++){
                   $errorStr .= "code: ".$error[ 'code']."<br />";
                   $errorStr .= "message: ".$error[ 'message']."<br />";
               }
-              mail('megan.lindsey@arkansas.gov', 'cashReciepts - DESC QRY', $errorStr . "<br />" . $descQuery . "On Line 266");
           }
           return "error";
     }else{
@@ -362,7 +372,6 @@ for($l=0;$l<sizeof($lineItemADJs);$l++){
               $errorStr .= "code: ".$error[ 'code']."<br />";
               $errorStr .= "message: ".$error[ 'message']."<br />";
           }
-          mail('megan.lindsey@arkansas.gov', 'cashReciepts - Template QRY', $errorStr . "<br />" . $queryLineItemAdj . "On Line 301");
       }
       return "error";
   }else{
@@ -396,7 +405,6 @@ for($l=0;$l<sizeof($taxItemADJs);$l++){
               $errorStr .= "code: ".$error[ 'code']."<br />";
               $errorStr .= "message: ".$error[ 'message']."<br />";
           }
-          mail('megan.lindsey@arkansas.gov', 'cashReciepts - Template QRY', $errorStr . "<br />" . $queryTaxItemAdj . "On Line 336");
       }
       return "error";
   }else{
@@ -429,7 +437,6 @@ for($l=0;$l<sizeof($taxExempt);$l++){
               $errorStr .= "code: ".$error[ 'code']."<br />";
               $errorStr .= "message: ".$error[ 'message']."<br />";
           }
-          mail('megan.lindsey@arkansas.gov', 'cashReciepts - Template QRY', $errorStr . "<br />" . $queryTaxExempt . "On Line 372");
       }
       return "error";
   }else{
@@ -499,7 +506,6 @@ if($_POST["cashADJ"] != 0 || $_POST["cashADJSHORT"] != 0 || $_POST["cashSalesADJ
               $errorStr .= "code: ".$error[ 'code']."<br />";
               $errorStr .= "message: ".$error[ 'message']."<br />";
           }
-          mail('megan.lindsey@arkansas.gov', 'cashReciepts - Template QRY', $errorStr . "<br />" . $queryPaymentAdj . "On Line 439");
       }
       return "error";
   }else{
@@ -550,7 +556,6 @@ $cashLogQRY = "INSERT INTO cashLog (stID, stSftID, businessDate, bills_hundreds,
               $errorStr .= "code: ".$error[ 'code']."<br />";
               $errorStr .= "message: ".$error[ 'message']."<br />";
           }
-          mail('megan.lindsey@arkansas.gov', 'cashReciepts - Template QRY', $errorStr . "<br />" . $cashLogQRY . "On Line 486");
       }
       return "error";
   }else{
