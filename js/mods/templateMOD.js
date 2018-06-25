@@ -434,10 +434,11 @@ _printSaveButton = function(name){
 
             console.log(descItemVal);
 
-            var crFormData = JSON.stringify(form.getFormData());
+            var crFormData = form.getFormData(true);
+            console.log(crFormData);
 
             dhtmlx.message({id: "crLoadingBox", expire:35000, text: "<img src='/data/gifs/ghosty-success.gif' width='28' height='21'>&nbsp;SAVING DATA...PLEASE WAIT."});
-            form.send(cashReceipts2.getPaths("ext")+"saveTempCost_v2.php?station="+stID+"&lineItems="+lineItemString+"&descItems="+descItemString+"&adjList="+adjList+"&crFormData="+encodeURIComponent(crFormData), "post", function(r){
+            form.send(cashReceipts2.getPaths("ext")+"saveTempCost_v2.php?station="+stID+"&lineItems="+lineItemString+"&descItems="+descItemString+"&adjList="+adjList+"&crFormData="+crFormData, "post", function(r){
                 console.log(r.xmlDoc.responseText);
                 dhtmlx.alert({
                     type: "alert",

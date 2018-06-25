@@ -97,7 +97,8 @@
         paymentType_8_salesAdj,
 
 		taxTypes,
-		templates
+		templates,
+		numOfSaleItems
 ");
 	}
 ?>

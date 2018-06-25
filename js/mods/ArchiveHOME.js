@@ -115,129 +115,140 @@ var _onRowSelect = function(){
 
         events.emit("addSalesToPrintForm", JSON.parse(crData.templates[0]._text));
 
-// HERE WE ARE CHANGING NULL VALUES TO 0.00 TO POPULATE THE FORM        
-        for (var property in crData) {
-            if (crData.hasOwnProperty(property)) {
-                //console.log("PROPERTY: "+property+" VALUE -> "+crData[property][0]._text);
-               if( crData[property][0]._text == undefined){
-               // console.log("SET DAT NULL TO ZEEEROO!!!");
-                crData[property][0]._text = 0.00;
-               }
+        dhx.ajax.get(cashReceipts2.getPaths("ext")+"getCRFormData.php?crrID="+id, function(text){
+
+        }).then(function(realdata){
+            var data = JSON.parse(JSON.parse(realdata));
+            console.log(data);
+
+            for(property in data){
+                printForm.setItemValue(property, data[property]);
             }
-        }
+        });
+
+// HERE WE ARE CHANGING NULL VALUES TO 0.00 TO POPULATE THE FORM        
+        // for (var property in crData) {
+        //     if (crData.hasOwnProperty(property)) {
+        //         //console.log("PROPERTY: "+property+" VALUE -> "+crData[property][0]._text);
+        //        if( crData[property][0]._text == undefined){
+        //        // console.log("SET DAT NULL TO ZEEEROO!!!");
+        //         crData[property][0]._text = 0.00;
+        //        }
+        //     }
+        // }
 
 // SHIFT - B.DATE VALUES:
-            printForm.setItemValue("effectDate", crData.businessDate[0]._text);
-            printForm.setItemValue("shiftType", crData.stSftID[0]._text);
+            // printForm.setItemValue("effectDate", crData.businessDate[0]._text);
+            // printForm.setItemValue("shiftType", crData.stSftID[0]._text);
 
 // CASH LOG VALUES:
-            printForm.setItemValue("hundreds", crData.bills_hundreds[0]._text);
-            printForm.setItemValue("fifties", crData.bills_fifties[0]._text);
-            printForm.setItemValue("twenties", crData.bills_twenties[0]._text);
-            printForm.setItemValue("tens", crData.bills_tens[0]._text);
-            printForm.setItemValue("fives", crData.bills_fives[0]._text);
-            printForm.setItemValue("twos", crData.bills_twos[0]._text);
-            printForm.setItemValue("ones", crData.bills_ones[0]._text);
-            printForm.setItemValue("rQuarters", crData.roll_quarters[0]._text);
-            printForm.setItemValue("rDimes", crData.roll_dimes[0]._text);
-            printForm.setItemValue("rNickles", crData.roll_nickles[0]._text);
-            printForm.setItemValue("rPennies", crData.roll_pennies[0]._text);
-            printForm.setItemValue("dollar", crData.coin_dollars[0]._text);
-            printForm.setItemValue("HDollar", crData.coin_halfDollars[0]._text);
-            printForm.setItemValue("Quarters", crData.coin_quarters[0]._text);
-            printForm.setItemValue("Dimes", crData.coin_dimes[0]._text);
-            printForm.setItemValue("Nickles", crData.coin_nickles[0]._text);
-            printForm.setItemValue("Pennies", crData.coin_pennies[0]._text);
-            printForm.setItemValue("cf", crData.cashFund[0]._text);
+            // printForm.setItemValue("hundreds", crData.bills_hundreds[0]._text);
+            // printForm.setItemValue("fifties", crData.bills_fifties[0]._text);
+            // printForm.setItemValue("twenties", crData.bills_twenties[0]._text);
+            // printForm.setItemValue("tens", crData.bills_tens[0]._text);
+            // printForm.setItemValue("fives", crData.bills_fives[0]._text);
+            // printForm.setItemValue("twos", crData.bills_twos[0]._text);
+            // printForm.setItemValue("ones", crData.bills_ones[0]._text);
+            // printForm.setItemValue("rQuarters", crData.roll_quarters[0]._text);
+            // printForm.setItemValue("rDimes", crData.roll_dimes[0]._text);
+            // printForm.setItemValue("rNickles", crData.roll_nickles[0]._text);
+            // printForm.setItemValue("rPennies", crData.roll_pennies[0]._text);
+            // printForm.setItemValue("dollar", crData.coin_dollars[0]._text);
+            // printForm.setItemValue("HDollar", crData.coin_halfDollars[0]._text);
+            // printForm.setItemValue("Quarters", crData.coin_quarters[0]._text);
+            // printForm.setItemValue("Dimes", crData.coin_dimes[0]._text);
+            // printForm.setItemValue("Nickles", crData.coin_nickles[0]._text);
+            // printForm.setItemValue("Pennies", crData.coin_pennies[0]._text);
+            // printForm.setItemValue("cf", crData.cashFund[0]._text);
 
 // REGISTER BALANCE VALUES:
-            printForm.setItemValue("beginBal", crData.regBegBal[0]._text);
-            printForm.setItemValue("endBal", crData.regEndBal[0]._text);
-            printForm.setItemValue("returnBal", crData.returns[0]._text);
-            printForm.setItemValue("securityDep", crData.secDeposits[0]._text);
-            printForm.setItemValue("otherRegBalAdj", crData.otherBalAdj_1[0]._text);
-            printForm.setItemValue("otherRegBalAdj2", crData.otherBalAdj_2[0]._text);
+            // printForm.setItemValue("beginBal", crData.regBegBal[0]._text);
+            // printForm.setItemValue("endBal", crData.regEndBal[0]._text);
+            // printForm.setItemValue("returnBal", crData.returns[0]._text);
+            // printForm.setItemValue("securityDep", crData.secDeposits[0]._text);
+            // printForm.setItemValue("otherRegBalAdj", crData.otherBalAdj_1[0]._text);
+            // printForm.setItemValue("otherRegBalAdj2", crData.otherBalAdj_2[0]._text);
 
 // PAYMENT SET.TAPE VALUES:            
-            printForm.setItemValue("countSheetCK", crData.chkCountSheet[0]._text);
-            printForm.setItemValue("amxSettlementTape", crData.settlementTape_3[0]._text);
-            printForm.setItemValue("discSettlementTape", crData.settlementTape_4[0]._text);
-            printForm.setItemValue("masterSettlementTape", crData.settlementTape_5[0]._text);
-            printForm.setItemValue("visaSettlementTape", crData.settlementTape_6[0]._text);
-            printForm.setItemValue("GIFTUCRT", crData.settlementTape_7[0]._text);
-            printForm.setItemValue("debitSettlementTape", crData.settlementTape_8[0]._text);
+            // printForm.setItemValue("countSheetCK", crData.chkCountSheet[0]._text);
+            // printForm.setItemValue("amxSettlementTape", crData.settlementTape_3[0]._text);
+            // printForm.setItemValue("discSettlementTape", crData.settlementTape_4[0]._text);
+            // printForm.setItemValue("masterSettlementTape", crData.settlementTape_5[0]._text);
+            // printForm.setItemValue("visaSettlementTape", crData.settlementTape_6[0]._text);
+            // printForm.setItemValue("GIFTUCRT", crData.settlementTape_7[0]._text);
+            // printForm.setItemValue("debitSettlementTape", crData.settlementTape_8[0]._text);
 
 // PAYMENT REGISTER TAPE VALUES:
-            printForm.setItemValue("CASH", crData.paymentType_1[0]._text);
-            printForm.setItemValue("CK", crData.paymentType_2[0]._text);
-            printForm.setItemValue("AMEX", crData.paymentType_3[0]._text);
-            printForm.setItemValue("DISC", crData.paymentType_4[0]._text);
-            printForm.setItemValue("MAST", crData.paymentType_5[0]._text);
-            printForm.setItemValue("VISA", crData.paymentType_6[0]._text);
-            printForm.setItemValue("UCRT", crData.paymentType_7[0]._text);
-            printForm.setItemValue("DEBIT", crData.paymentType_8[0]._text);
+            // printForm.setItemValue("CASH", crData.paymentType_1[0]._text);
+            // printForm.setItemValue("CK", crData.paymentType_2[0]._text);
+            // printForm.setItemValue("AMEX", crData.paymentType_3[0]._text);
+            // printForm.setItemValue("DISC", crData.paymentType_4[0]._text);
+            // printForm.setItemValue("MAST", crData.paymentType_5[0]._text);
+            // printForm.setItemValue("VISA", crData.paymentType_6[0]._text);
+            // printForm.setItemValue("UCRT", crData.paymentType_7[0]._text);
+            // printForm.setItemValue("DEBIT", crData.paymentType_8[0]._text);
 
 // PAYMENT ADJ VALUES:
-            printForm.setItemValue("cashADJ", crData.paymentType_1_adj[0]._text);
-            printForm.setItemValue("ckADJ", crData.paymentType_2_adj[0]._text);
-            printForm.setItemValue("amxADJ", crData.paymentType_3_adj[0]._text);
-            printForm.setItemValue("discADJ", crData.paymentType_4_adj[0]._text);
-            printForm.setItemValue("masterADJ", crData.paymentType_5_adj[0]._text);
-            printForm.setItemValue("visaADJ", crData.paymentType_6_adj[0]._text);
-            printForm.setItemValue("crtADJ", crData.paymentType_7_adj[0]._text);
-            printForm.setItemValue("debitADJ", crData.paymentType_8_adj[0]._text);
+            // printForm.setItemValue("cashADJ", crData.paymentType_1_adj[0]._text);
+            // printForm.setItemValue("ckADJ", crData.paymentType_2_adj[0]._text);
+            // printForm.setItemValue("amxADJ", crData.paymentType_3_adj[0]._text);
+            // printForm.setItemValue("discADJ", crData.paymentType_4_adj[0]._text);
+            // printForm.setItemValue("masterADJ", crData.paymentType_5_adj[0]._text);
+            // printForm.setItemValue("visaADJ", crData.paymentType_6_adj[0]._text);
+            // printForm.setItemValue("crtADJ", crData.paymentType_7_adj[0]._text);
+            // printForm.setItemValue("debitADJ", crData.paymentType_8_adj[0]._text);
 
 // PAYMENT SALES ADJ VALUES:
-            printForm.setItemValue("cashSalesADJ", crData.paymentType_1_salesAdj[0]._text);
-            printForm.setItemValue("checkSalesADJ", crData.paymentType_2_salesAdj[0]._text);
-            printForm.setItemValue("amxSalesADJ", crData.paymentType_3_salesAdj[0]._text);
-            printForm.setItemValue("discSalesADJ", crData.paymentType_4_salesAdj[0]._text);
-            printForm.setItemValue("masterSALESADJ", crData.paymentType_5_salesAdj[0]._text);
-            printForm.setItemValue("visaSalesADJ", crData.paymentType_6_salesAdj[0]._text);
-            printForm.setItemValue("salesCERTADJ", crData.paymentType_7_salesAdj[0]._text);
-            printForm.setItemValue("debitSalesADJ", crData.paymentType_8_salesAdj[0]._text);
+            // printForm.setItemValue("cashSalesADJ", crData.paymentType_1_salesAdj[0]._text);
+            // printForm.setItemValue("checkSalesADJ", crData.paymentType_2_salesAdj[0]._text);
+            // printForm.setItemValue("amxSalesADJ", crData.paymentType_3_salesAdj[0]._text);
+            // printForm.setItemValue("discSalesADJ", crData.paymentType_4_salesAdj[0]._text);
+            // printForm.setItemValue("masterSALESADJ", crData.paymentType_5_salesAdj[0]._text);
+            // printForm.setItemValue("visaSalesADJ", crData.paymentType_6_salesAdj[0]._text);
+            // printForm.setItemValue("salesCERTADJ", crData.paymentType_7_salesAdj[0]._text);
+            // printForm.setItemValue("debitSalesADJ", crData.paymentType_8_salesAdj[0]._text);
 
 // PAYMENT O/S ADJ VALUES:
-            printForm.setItemValue("cashADJSHORT", crData.paymentType_1_overShort[0]._text);
-            printForm.setItemValue("checkADJSHORT", crData.paymentType_2_overShort[0]._text);
-            printForm.setItemValue("amxSHORTADJ", crData.paymentType_3_overShort[0]._text);
-            printForm.setItemValue("discCASHSHORTADJ", crData.paymentType_4_overShort[0]._text);
-            printForm.setItemValue("masterCASHSHORTADJ", crData.paymentType_5_overShort[0]._text);
-            printForm.setItemValue("visaCASHSHORTADJ", crData.paymentType_6_overShort[0]._text);
-            printForm.setItemValue("giftCERTcsADJ", crData.paymentType_7_overShort[0]._text);
-            printForm.setItemValue("debitSHORTADJ", crData.paymentType_8_overShort[0]._text);
+            // printForm.setItemValue("cashADJSHORT", crData.paymentType_1_overShort[0]._text);
+            // printForm.setItemValue("checkADJSHORT", crData.paymentType_2_overShort[0]._text);
+            // printForm.setItemValue("amxSHORTADJ", crData.paymentType_3_overShort[0]._text);
+            // printForm.setItemValue("discCASHSHORTADJ", crData.paymentType_4_overShort[0]._text);
+            // printForm.setItemValue("masterCASHSHORTADJ", crData.paymentType_5_overShort[0]._text);
+            // printForm.setItemValue("visaCASHSHORTADJ", crData.paymentType_6_overShort[0]._text);
+            // printForm.setItemValue("giftCERTcsADJ", crData.paymentType_7_overShort[0]._text);
+            // printForm.setItemValue("debitSHORTADJ", crData.paymentType_8_overShort[0]._text);
 
 
 
-            printForm.setItemValue("totalCHARGE", crData.totalPayments[0]._text);
+            // printForm.setItemValue("totalCHARGE", crData.totalPayments[0]._text);
 
             //printForm.setItemValue("totalCASH", crData.netDeposit[0]._text);
            // printForm.setItemValue("netCashTOTAL", crData.netDeposit[0]._text);
 
            console.log(printForm.getItemValue("totalSales"));
 
-            printForm.forEachItem(function(name){
+            // printForm.forEachItem(function(name){
                 
-                _calculateCashLog(name);                                                                 // CASH LOG
-                _calculateTotalDailyActivity();                                                         // TDA 
-                _calculateDebit(name);                                                                 // DEBIT
-                _calculateCRT(name);                                                                  // GIFT CERT.
-                _calculateVISA(name);                                                                // VISA
-                _calculateMC(name);                                                                 // MASTER CARD
-                _calculateDISC(name);                                                              // DISCOVER
-                _calculateAMX(name);                                                              // AMERICAN EXPRESS
-                _calculateSettlementTapeTotal(name);                                             // SETTLEMENT TAPE TOTAL
-                _calculateRegisterTapeTotal(name);                                              // REGISTER TAPE TOTAL
-                _calculateDifferenceTotal(name);                                               // DIFFERENCE TOTAL
-                _calculatePaymentADJTotal(name);                                              // PAYMENT ADJ TOTAL
-                _calculateSalesADJTotal(name);                                               // SALE ITEM ADJ TOTAL
-                _calculateOSADJTotal(name);                                                 // OVERSHORT TOTAL
-                _calculateADJCreditTotal(name);                                            // OVERALL CREDIT CARD TOTAL
+            //     _calculateCashLog(name);                                                                 // CASH LOG
+            //     _calculateTotalDailyActivity();                                                         // TDA 
+            //     _calculateDebit(name);                                                                 // DEBIT
+            //     _calculateCRT(name);                                                                  // GIFT CERT.
+            //     _calculateVISA(name);                                                                // VISA
+            //     _calculateMC(name);                                                                 // MASTER CARD
+            //     _calculateDISC(name);                                                              // DISCOVER
+            //     _calculateAMX(name);                                                              // AMERICAN EXPRESS
+            //     _calculateSettlementTapeTotal(name);                                             // SETTLEMENT TAPE TOTAL
+            //     _calculateRegisterTapeTotal(name);                                              // REGISTER TAPE TOTAL
+            //     _calculateDifferenceTotal(name);                                               // DIFFERENCE TOTAL
+            //     _calculatePaymentADJTotal(name);                                              // PAYMENT ADJ TOTAL
+            //     _calculateSalesADJTotal(name);                                               // SALE ITEM ADJ TOTAL
+            //     _calculateOSADJTotal(name);                                                 // OVERSHORT TOTAL
+            //     _calculateADJCreditTotal(name);                                            // OVERALL CREDIT CARD TOTAL
         
                 
                
         
-            });
+            // });
         
             dhtmlx.message.hide("archiveLoadingBox");
 

@@ -300,7 +300,7 @@ echo $query;
               $errorStr .= "message: ".$error[ 'message']."<br />";
           }
       }
-      return "error";
+      die("SQL ERROR: ".$errorStr);
   }else{
     $submissionQry = "INSERT INTO [Playground Aaron].dbo.submittedForms (crrID, submittedForm) VALUES (@@identity, '".$_GET["crFormData"]."')";
     $res = sqlsrv_query($conn, $submissionQry);
@@ -313,7 +313,7 @@ echo $query;
                 $errorStr .= "message: ".$error[ 'message']."<br />";
             }
         }
-        return "error";
+        die("SQL ERROR: ".$errorStr);
     }
   }
 
@@ -338,7 +338,7 @@ for($i=0;$i<sizeof($descItems);$i++){
                   $errorStr .= "message: ".$error[ 'message']."<br />";
               }
           }
-          return "error";
+          die("SQL ERROR: ".$errorStr);
     }else{
 
     }
@@ -373,7 +373,7 @@ for($l=0;$l<sizeof($lineItemADJs);$l++){
               $errorStr .= "message: ".$error[ 'message']."<br />";
           }
       }
-      return "error";
+      die("SQL ERROR: ".$errorStr);
   }else{
 
   }
@@ -406,7 +406,7 @@ for($l=0;$l<sizeof($taxItemADJs);$l++){
               $errorStr .= "message: ".$error[ 'message']."<br />";
           }
       }
-      return "error";
+      die("SQL ERROR: ".$errorStr);
   }else{
 
   }
@@ -438,7 +438,7 @@ for($l=0;$l<sizeof($taxExempt);$l++){
               $errorStr .= "message: ".$error[ 'message']."<br />";
           }
       }
-      return "error";
+      die("SQL ERROR: ".$errorStr);
   }else{
 
   }
@@ -507,7 +507,7 @@ if($_POST["cashADJ"] != 0 || $_POST["cashADJSHORT"] != 0 || $_POST["cashSalesADJ
               $errorStr .= "message: ".$error[ 'message']."<br />";
           }
       }
-      return "error";
+      die("SQL ERROR: ".$errorStr);
   }else{
 
   }
